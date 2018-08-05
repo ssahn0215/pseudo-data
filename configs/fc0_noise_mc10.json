@@ -5,7 +5,7 @@
     "pseudo_init_method": "noise_with_int_lables",
 
     "num_classes": 10,
-    "num_training_steps": 100000,
+    "num_training_steps": 1000000,
     "num_burnin_steps": 1000,
 
     "data_numpy_pkl": "./data/mnist/data_numpy.pkl",
@@ -19,7 +19,7 @@
     "pseudo_data_size": 100,
 
     "walk_size": 1e-5,
-    "fisher_learning_rate": 1e-6,
+    "fisher_learning_rate": 1e-5,
 
     "num_walks_per_step": 10,
 
