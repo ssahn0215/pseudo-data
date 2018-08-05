@@ -84,7 +84,8 @@ class InducerBuilder:
         fisher = (log_liks_grads-log_liks_pseudo_grads)/self.config.train_data_size
         fisher = tf.reduce_mean(tf.square(fisher))
         fisher_opt_op = tf.train.GradientDescentOptimizer(
-            learning_rate=self.config.fisher_learning_rate).minimize(fisher)
+            learning_rate=self.config.fisher_learning_rate).minimize(
+                fisher, var_list=[x_pseudo])
 
         tf.add_to_collection('losses', fisher)
         tf.add_to_collection('step_ops', fisher_opt_op)
