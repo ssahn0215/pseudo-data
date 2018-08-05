@@ -16,7 +16,7 @@
     "layer_dims": [784, 10],
 
     "train_data_size": 50000,
-    "pseudo_data_size": 300,
+    "pseudo_data_size": 1000,
 
     "walk_size": 1e-5,
     "fisher_learning_rate": 1e0,
@@ -28,7 +28,7 @@
 
   "config_cla": {
     "num_classes": 10,
-    "num_training_steps": 1000,
+    "num_training_steps": 5000,
 
     "batch_size": 64,
 
