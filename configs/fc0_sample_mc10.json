@@ -5,8 +5,8 @@
     "pseudo_init_method": "sample",
 
     "num_classes": 10,
-    "num_training_steps": 500000,
-    "num_burnin_steps": 10000,
+    "num_training_steps": 100000,
+    "num_burnin_steps": 1000,
 
     "data_numpy_pkl": "./data/mnist/data_numpy.pkl",
 
@@ -16,7 +16,7 @@
     "layer_dims": [784, 10],
 
     "train_data_size": 50000,
-    "pseudo_data_size": 1000,
+    "pseudo_data_size": 100,
 
     "walk_size": 1e-5,
     "fisher_learning_rate": 1e1,
@@ -44,5 +44,5 @@
     "max_to_keep": 2
   },
 
-  "num_steps_per_iter": 20000
+  "num_steps_per_iter": 5000
 }
