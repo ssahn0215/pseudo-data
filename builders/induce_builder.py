@@ -82,7 +82,7 @@ class InducerBuilder:
         log_liks_grads = tf.gradients(log_liks, [weights])[0]
         log_liks_pseudo_grads = tf.gradients(log_liks_pseudo, [weights])[0]
         fisher = (log_liks_grads-log_liks_pseudo_grads)/self.config.train_data_size
-        fisher = tf.reduce_mean(tf.square(fisher))
+        fisher = tf.reduce_sum(tf.square(fisher))
         fisher_opt_op = tf.train.GradientDescentOptimizer(
             learning_rate=self.config.fisher_learning_rate).minimize(
                 fisher, var_list=[x_pseudo])
