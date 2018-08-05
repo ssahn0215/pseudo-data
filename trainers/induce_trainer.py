@@ -49,14 +49,19 @@ class InducerTrainer:
             if cur_step % self.data_loader.num_iterations_train == 0:
                 self.data_loader.initialize(self.sess, state='train')
 
+                tt.set_description(
+                    "walk_loss: {:.3E}, fisher_loss: {:.3E}, error: {:.2f}, acpt_rate: {:.2f}".format(
+                        walk_loss_per_epoch.avg,
+                        fisher_loss_per_epoch.avg,
+                        error_per_epoch.avg,
+                        acpt_rate_per_epoch.avg))
+
             if init_global_step+cur_step < self.config.num_burnin_steps:
                 _, _, walk_loss, error = self.sess.run([
                     global_step_inc_op, walk_op, walk_loss_node, error_node])
+
                 walk_loss_per_epoch.update(walk_loss)
                 error_per_epoch.update(error)
-                tt.set_description(
-                    "walk_loss: {:.3E}, error: {:.2f} ".format(
-                        walk_loss, error))
 
                 summaries_dict = {'train/walk_loss': walk_loss,
                                   'train/acc': error}
@@ -71,13 +76,6 @@ class InducerTrainer:
                 fisher_loss_per_epoch.update(fisher_loss)
                 error_per_epoch.update(error)
                 acpt_rate_per_epoch.update(acpt_rate)
-
-                tt.set_description(
-                    "walk_loss: {:.3E}, fisher_loss: {:.3E}, error: {:.2f}, acpt_rate: {:.2f}".format(
-                        walk_loss_per_epoch.avg,
-                        fisher_loss_per_epoch.avg,
-                        error_per_epoch.avg,
-                        acpt_rate_per_epoch.avg))
 
                 summaries_dict = {'train/walk_loss': walk_loss,
                                   'train/fisher_loss': fisher_loss,
