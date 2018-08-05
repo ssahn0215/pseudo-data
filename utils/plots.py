@@ -23,5 +23,5 @@ def reshape_and_tile_images(array, shape=(28, 28), n_cols=None):
 
 def plot_images(images, filename, dirname, shape = (28, 28), n_rows = 10):
     images = reshape_and_tile_images(images, shape, n_rows)
-    plt.imsave(fname=os.path.join(dirname+filename+".png"), arr=images, cmap=cm.Greys_r)
+    plt.imsave(fname=os.path.join(dirname+filename), arr=images, cmap=cm.Greys_r)
     plt.close()

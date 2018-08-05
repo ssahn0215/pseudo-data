@@ -26,13 +26,6 @@ class MnistDataLoader:
         self.x_test = self.data_pkl['x_test']
         self.y_test = self.data_pkl['y_test']
 
-        print('x_train: ', self.x_train.shape, self.x_train.dtype)
-        print('y_train: ', self.y_train.shape, self.y_train.dtype)
-        print('x_validate: ', self.x_validate.shape, self.x_train.dtype)
-        print('y_validate: ', self.y_validate.shape, self.y_validate.dtype)
-        print('x_test: ', self.x_test.shape, self.x_test.dtype)
-        print('y_test: ', self.y_test.shape, self.y_test.dtype)
-
         self.train_len = self.x_train.shape[0]
         self.validate_len = self.x_validate.shape[0]
         self.test_len = self.x_test.shape[0]
@@ -40,8 +33,6 @@ class MnistDataLoader:
         self.num_iterations_train = (self.train_len + self.config.batch_size - 1) // self.config.batch_size
         self.num_iterations_validate = (self.validate_len + self.config.batch_size - 1) // self.config.batch_size
         self.num_iterations_test = (self.test_len + self.config.batch_size - 1) // self.config.batch_size
-
-        print("Data loaded successfully..")
 
         self.features_placeholder = None
         self.labels_placeholder = None
@@ -66,9 +57,6 @@ class MnistDataLoader:
             self.init_iterator_op = self.iterator.make_initializer(self.dataset)
 
             self.next_batch = self.iterator.get_next()
-
-            print("X_batch shape dtype: ", self.next_batch[0].shape)
-            print("Y_batch shape dtype: ", self.next_batch[1].shape)
 
     def initialize(self, sess, state):
         if state == 'train':

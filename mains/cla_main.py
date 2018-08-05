@@ -4,50 +4,51 @@ import os
 import tensorflow as tf
 import numpy as np
 
-from build import build
-from run_steps import run_steps
-
 sys.path.extend([os.path.join(sys.path[0],'..')])
 
 from data_loader.mnist_loader import MnistDataLoader
 
 from models.ensemble_model import MnistEnsembleModel
 
-from utils.config import process_config
+from builders.cla_builder import ClassifierBuilder
+
+from trainers.cla_trainer import ClassifierTrainer
+
+from utils.config import get_config_from_json
 from utils.dirs import create_dirs
 from utils.logger import DefinedSummarizer
 from utils.utils import get_args
 
-def induce(num_steps, sess, config):
+def process_config(json_file):
+    config, _ = get_config_from_json(json_file)
+
+    return config
+
+def build_and_train_classifier(num_steps, config):
     # make tensorflow session
     sess = tf.Session()
-    # create the experiments dirs
-    create_dirs([config.summary_dir, config.checkpoint_dir, config.etc_dir])
 
-    # create tensorboard logger
-    logger = DefinedSummarizer(
-        sess, summary_dir=config.summary_dir,
-        scalar_tags=['train/loss_per_epoch', 'train/acc_per_epoch'])
-
-    # get data loader
+    # get data loader, model, builder, trainer
     data_loader = MnistDataLoader(config)
 
-    # get model
     model = MnistEnsembleModel(config)
 
+    builder = ClassifierBuilder(data_loader, model, config)
+
+    trainer = ClassifierTrainer(sess, data_loader, None, config)
+
     # build graph
-    build(data_loader, model, config)
+    builder.build()
 
-    # train inducing points
-    run_steps(num_steps, sess, data_loader, model, logger, config)
+    # train classifier
+    trainer.train(num_steps)
 
-    # get outputs
-    sess.run(tf.get_collection('id_inputs'))
+    # test classifier
+    loss, error = trainer.test()
 
     # close session
     sess.close()
-
-    return
+    return loss, error
 
 def main():
     # capture the config path from the run arguments
@@ -72,9 +73,7 @@ def main():
     np.random.seed(1)
 
     # run induce function
-    sess = tf.Session()
-    induce(config.num_training_steps, sess, config)
-    sess.close()
+    build_and_train_classifier(config.num_training_steps, config)
 
 if __name__ == '__main__':
     main()
