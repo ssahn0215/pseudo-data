@@ -19,7 +19,7 @@
     "pseudo_data_size": 100,
 
     "walk_size": 1e-5,
-    "fisher_learning_rate": 1e-1,
+    "fisher_learning_rate": 1e-6,
 
     "num_walks_per_step": 10,
 
