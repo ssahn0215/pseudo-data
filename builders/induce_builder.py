@@ -105,10 +105,6 @@ class InducerBuilder:
 
         tf.add_to_collection('error', error)
 
-        saver = tf.train.Saver(max_to_keep=self.config.max_to_keep, save_relative_paths=True)
-        tf.add_to_collection('saver', saver)
-
-
 def mala(thetas, log_probs_fn, lr, nb_walk_per_step):
     avg_acceptance_rate_ = 0.0
     thetas_ = thetas

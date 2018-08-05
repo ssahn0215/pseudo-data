@@ -16,7 +16,9 @@ class InducerTrainer:
         self.sess.run(tf.global_variables_initializer())
 
         # load previously saved check points (if any)
-        saver = tf.get_collection('saver')[0]
+        saver = tf.train.Saver(
+            max_to_keep=self.config.max_to_keep, save_relative_paths=True)
+
         latest_checkpoint = tf.train.latest_checkpoint(self.config.checkpoint_dir)
         if latest_checkpoint:
             print("Loading model checkpoint {} ...".format(latest_checkpoint))

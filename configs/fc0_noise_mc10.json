@@ -1,8 +1,8 @@
 {
-  "exp_name": "fc0_sample",
+  "exp_name": "fc0_noise_mc10",
 
   "config_induce": {
-    "pseudo_init_method": "sample",
+    "pseudo_init_method": "noise_with_int_lables",
 
     "num_classes": 10,
     "num_training_steps": 500000,
@@ -21,14 +21,14 @@
     "walk_size": 1e-5,
     "fisher_learning_rate": 1e0,
 
-    "num_walks_per_step": 1,
+    "num_walks_per_step": 10,
 
     "max_to_keep": 2
   },
 
   "config_cla": {
     "num_classes": 10,
-    "num_training_steps": 1000,
+    "num_training_steps": 4000,
 
     "batch_size": 64,
 

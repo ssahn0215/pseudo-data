@@ -1,5 +1,5 @@
 {
-  "exp_name": "fc0_sample",
+  "exp_name": "fc0_sample_mc10",
 
   "config_induce": {
     "pseudo_init_method": "sample",
@@ -21,7 +21,7 @@
     "walk_size": 1e-5,
     "fisher_learning_rate": 1e0,
 
-    "num_walks_per_step": 1,
+    "num_walks_per_step": 10,
 
     "max_to_keep": 2
   },
