@@ -49,6 +49,8 @@ class InducerBuilder:
         _ = self.model.build_model(x, y, name='ensemble_model')
         weights, logits, log_liks, log_priors, log_probs = _
 
+        tf.add_to_collection('weights', weights)
+        
         """
         Network with pseudo input
         """

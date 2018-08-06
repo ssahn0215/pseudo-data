@@ -1,12 +1,13 @@
 {
-  "exp_name": "fc0_small",
+  "exp_name": "fc0_4",
 
   "config_induce": {
     "pseudo_init_method": "noise_with_int_lables",
 
     "num_classes": 10,
-    "num_training_steps": 1000000,
+    "num_training_steps": 100000,
     "num_burnin_steps": 1000,
+    "num_reset_steps": 100000,
 
     "data_numpy_pkl": "./data/mnist/data_numpy.pkl",
 
