@@ -60,7 +60,7 @@ class InducerTrainer:
                         acpt_rate_per_epoch.avg))
 
             if cur_step%self.config.num_reset_steps == 0:
-                self.sess.run(tf.variables_initializer(weights))
+                self.sess.run(tf.variables_initializer([weights]))
 
             if (init_global_step+cur_step%self.config.num_reset_steps)< self.config.num_burnin_steps:
                 _, _, walk_loss, error = self.sess.run([
