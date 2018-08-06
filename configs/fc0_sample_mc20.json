@@ -44,5 +44,5 @@
     "max_to_keep": 2
   },
 
-  "num_steps_per_iter": 5000
+  "num_steps_per_iter": 50000
 }
