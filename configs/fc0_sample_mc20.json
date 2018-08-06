@@ -1,5 +1,5 @@
 {
-  "exp_name": "fc0_sample",
+  "exp_name": "fc0_sample_mc20",
 
   "config_induce": {
     "pseudo_init_method": "sample",

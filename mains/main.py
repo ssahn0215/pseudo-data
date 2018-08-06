@@ -14,7 +14,7 @@ sys.path.extend([os.path.join(sys.path[0],'..')])
 from utils.config import get_config_from_json
 from utils.dirs import create_dirs
 from utils.utils import get_args
-from utils.plots import plot_images
+from utils.plots import plot_images_and_labels
 
 def process_config(json_file):
     config, _ = get_config_from_json(json_file)
@@ -75,7 +75,7 @@ def main():
 
         step += num_steps
 
-        plot_images(x_pseudo, 'pseudo_'+str(step), config.img_dir)
+        plot_images_and_labels(x_pseudo, y_pseudo, 'pseudo_'+str(step), config.img_dir)
 
         print("Build and train classifier...")
         tf.reset_default_graph()

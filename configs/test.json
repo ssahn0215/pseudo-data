@@ -2,7 +2,7 @@
   "exp_name": "test",
 
   "config_induce": {
-    "pseudo_init_method": "noise_with_int_lables",
+    "pseudo_init_method": "noise_with_smooth_lables",
 
     "num_classes": 10,
     "num_training_steps": 1000,
@@ -19,7 +19,7 @@
     "pseudo_data_size": 100,
 
     "walk_size": 1e-5,
-    "fisher_learning_rate": 1e0,
+    "fisher_learning_rate": 1e-5,
 
     "num_walks_per_step": 1,
 

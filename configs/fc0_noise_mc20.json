@@ -1,5 +1,5 @@
 {
-  "exp_name": "fc0_noise",
+  "exp_name": "fc0_noise_mc20",
 
   "config_induce": {
     "pseudo_init_method": "noise_with_int_lables",

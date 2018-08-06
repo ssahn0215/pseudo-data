@@ -92,9 +92,24 @@ class MnistDataLoader:
             x_pseudo, y_pseudo = [], []
             for c in range(self.config.num_classes):
                 c_idx = np.where(np.argmax(self.y_train, axis=1)==c)[0]
-                x_pseudo.append(np.random.normal(
+                x_pseudo.append(np.random.normal(scale=1e-5,
                     size=[int(self.config.pseudo_data_size/self.config.num_classes), 784]).astype(np.float32))
                 y_pseudo.append(self.y_train[c_idx[:int(self.config.pseudo_data_size/self.config.num_classes)],:])
+
+            x_pseudo = np.concatenate(x_pseudo, axis=0)
+            y_pseudo = np.concatenate(y_pseudo, axis=0)
+            return x_pseudo, y_pseudo
+
+        elif self.config.pseudo_init_method == "noise_with_smooth_lables":
+            x_pseudo, y_pseudo = [], []
+            for c in range(self.config.num_classes):
+                c_idx = np.where(np.argmax(self.y_train, axis=1)==c)[0]
+                x_pseudo.append(np.random.normal(scale=1e-5,
+                    size=[int(self.config.pseudo_data_size/self.config.num_classes), 784]).astype(np.float32))
+                _y_pseudo = np.random.random(
+                    size=[int(self.config.pseudo_data_size/self.config.num_classes), 10]).astype(np.float32)
+                _y_pseudo /= np.sum(_y_pseudo, axis=1, keepdims=True)
+                y_pseudo.append(_y_pseudo)
 
             x_pseudo = np.concatenate(x_pseudo, axis=0)
             y_pseudo = np.concatenate(y_pseudo, axis=0)
