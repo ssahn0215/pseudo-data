@@ -1,8 +1,8 @@
 {
-  "exp_name": "fc0_noise_smooth_mc20",
+  "exp_name": "fc0_sample_mc20",
 
   "config_induce": {
-    "pseudo_init_method": "noise_with_smooth_lables",
+    "pseudo_init_method": "sample",
 
     "num_classes": 10,
     "num_training_steps": 100000,
@@ -19,7 +19,7 @@
     "pseudo_data_size": 100,
 
     "walk_size": 1e-5,
-    "fisher_learning_rate": 1e-7,
+    "fisher_learning_rate": 1e-10,
 
     "num_walks_per_step": 20,
 
@@ -28,7 +28,7 @@
 
   "config_cla": {
     "num_classes": 10,
-    "num_training_steps": 5000,
+    "num_training_steps": 10000,
 
     "batch_size": 64,
 
