@@ -5,7 +5,7 @@
     "pseudo_init_method": "noise_with_int_lables",
 
     "num_classes": 10,
-    "num_training_steps": 100000,
+    "num_training_steps": 500000,
     "num_burnin_steps": 1000,
     "num_reset_steps": 10000,
 
@@ -45,5 +45,5 @@
     "max_to_keep": 2
   },
 
-  "num_steps_per_iter": 5000
+  "num_steps_per_iter": 10000
 }

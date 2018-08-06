@@ -27,7 +27,7 @@ class InducerTrainer:
         # get train related nodes
         global_step_tensor = tf.get_collection('global_step')[0]
         global_step_inc_op, walk_op, fisher_opt_op = tf.get_collection('step_ops')
-        weight, = tf.get_collection('weight')
+        weights, = tf.get_collection('weights')
 
         # get loss and error_nodes
         walk_loss_node, fisher_loss_node = tf.get_collection('losses')
@@ -60,7 +60,7 @@ class InducerTrainer:
                         acpt_rate_per_epoch.avg))
 
             if cur_step%self.config.num_reset_steps == 0:
-                self.sess.run(tf.variable_initializer(weight))
+                self.sess.run(tf.variable_initializer(weights))
 
             if (init_global_step+cur_step%self.config.num_reset_steps)< self.config.num_burnin_steps:
                 _, _, walk_loss, error = self.sess.run([
