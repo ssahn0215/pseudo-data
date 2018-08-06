@@ -1,8 +1,8 @@
 {
-  "exp_name": "fc0_noise_smooth_mc20",
+  "exp_name": "fc0_mid",
 
   "config_induce": {
-    "pseudo_init_method": "noise_with_smooth_lables",
+    "pseudo_init_method": "noise_with_int_lables",
 
     "num_classes": 10,
     "num_training_steps": 100000,
