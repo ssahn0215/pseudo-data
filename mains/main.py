@@ -50,6 +50,7 @@ def main():
     # fix random seeds
     tf.set_random_seed(1)
     np.random.seed(1)
+    tf.logging.set_verbosity(0)
 
     create_dirs([config.summary_dir, config.img_dir])
 
