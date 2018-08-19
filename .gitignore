@@ -104,7 +104,8 @@ venv.bak/
 .mypy_cache/
 
 # Exp files
-experiments/*
+*/experiments/*
+*/logs/*
 
 *.npy
 *.pkl

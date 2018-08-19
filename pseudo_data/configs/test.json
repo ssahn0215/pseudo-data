@@ -1,0 +1,48 @@
+{
+  "exp_name": "test",
+
+  "config_induce": {
+    "pseudo_init_method": "noise_with_smooth_lables",
+
+    "num_classes": 10,
+    "num_training_steps": 1000,
+    "num_burnin_steps": 50,
+
+    "data_numpy_pkl": "./data/mnist/data_numpy.pkl",
+
+    "batch_size": 1000,
+
+    "ensemble_dim": 10,
+    "layer_dims": [784, 10],
+
+    "train_data_size": 50000,
+    "pseudo_data_size": 100,
+
+    "walk_size": 1e-5,
+    "fisher_learning_rate": 1e-5,
+
+    "num_walks_per_step": 1,
+
+    "max_to_keep": 2
+  },
+
+  "config_cla": {
+    "num_classes": 10,
+    "num_training_steps": 100,
+
+    "batch_size": 64,
+
+    "ensemble_dim": 10,
+    "layer_dims": [784, 10],
+
+    "train_data_size": 50000,
+
+    "walk_size": 1e-5,
+
+    "num_walks_per_step": 1,
+
+    "max_to_keep": 2
+  },
+
+  "num_steps_per_iter": 100
+}
